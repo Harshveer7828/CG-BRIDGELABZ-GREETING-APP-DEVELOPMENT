@@ -4,6 +4,8 @@ import com.greetingapp.greeting.entity.GreetingEntity;
 import com.greetingapp.greeting.service.GreetingService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("greet/hello")
 public class GreetingServiceController {
@@ -30,6 +32,14 @@ public class GreetingServiceController {
     public GreetingEntity saveMessage(@RequestBody String message){
         return greetingService.saveMessage(message);
     }
+
+    // GET request to get the message from ID
+    @GetMapping("/get/{id}")
+    public Optional<GreetingEntity> getMessageById(@PathVariable Long id){
+        return greetingService.findMessageById(id);
+    }
+
+
 
 
 
